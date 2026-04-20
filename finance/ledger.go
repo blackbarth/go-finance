@@ -46,10 +46,9 @@ func (l *Ledger) Balance() float64 {
 	for _, transaction := range l.transactions {
 		if transaction.Type == Income {
 			balance += transaction.Amount
-			continue
+		} else {
+			balance -= transaction.Amount
 		}
-
-		balance -= transaction.Amount
 	}
 
 	return balance
